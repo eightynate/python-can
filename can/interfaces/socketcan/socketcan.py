@@ -723,7 +723,7 @@ class SocketcanBus(BusABC):
         for channel, bcm_socket in self._bcm_sockets.items():
             log.debug("Closing bcm socket for channel %s", channel)
             bcm_socket.close()
-        log.debug("Closing raw can socket")
+        log.warning("Closing raw can socket")
         self.socket.close()
 
     def _recv_internal(
