@@ -460,9 +460,12 @@ class BusABC(metaclass=ABCMeta):
         if self._is_shutdown:
             LOG.debug("%s is already shut down", self.__class__)
             return
+        else:
+            LOG.debug("%s shutdown needed", self.__class__)
 
         self._is_shutdown = True
         self.stop_all_periodic_tasks()
+        LOG.debug("Is shutdown = %s", self._is_shutdown)
 
     def __enter__(self) -> Self:
         return self
@@ -476,6 +479,7 @@ class BusABC(metaclass=ABCMeta):
         self.shutdown()
 
     def __del__(self) -> None:
+        LOG.debug("Is shutdown = %s", self._is_shutdown)
         if not self._is_shutdown:
             LOG.warning("%s was not properly shut down", self.__class__.__name__)
             # We do some best-effort cleanup if the user
