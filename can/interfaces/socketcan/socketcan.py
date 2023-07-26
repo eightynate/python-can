@@ -727,6 +727,7 @@ class SocketcanBus(BusABC):
         self.socket.close()
         try:
             self._is_shutdown = True
+            log.warning("self._is_shutdown = True -> PASS")
         except:
             log.warning("self._is_shutdown = True -> FAILED")
 
