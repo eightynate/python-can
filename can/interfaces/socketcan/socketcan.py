@@ -724,6 +724,7 @@ class SocketcanBus(BusABC):
             log.debug("Closing bcm socket for channel %s", channel)
             bcm_socket.close()
         log.warning("Closing raw can socket")
+        self.socket.shutdown(2)
         self.socket.close()
 
     def _recv_internal(
