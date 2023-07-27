@@ -95,6 +95,8 @@ class BusABC(metaclass=ABCMeta):
         :raises ~can.exceptions.CanInitializationError:
             If the bus cannot be initialized
         """
+        LOG.setLevel(logging.DEBUG)
+
         self._periodic_tasks: List[_SelfRemovingCyclicTask] = []
         self.set_filters(can_filters)
 
