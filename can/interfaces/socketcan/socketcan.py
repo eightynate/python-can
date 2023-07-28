@@ -725,11 +725,6 @@ class SocketcanBus(BusABC):
             bcm_socket.close()
         log.warning("Closing raw can socket")
         self.socket.close()
-        try:
-            self._is_shutdown = True
-            log.warning("self._is_shutdown = True -> PASS")
-        except:
-            log.warning("self._is_shutdown = True -> FAILED")
 
     def _recv_internal(
         self, timeout: Optional[float]
